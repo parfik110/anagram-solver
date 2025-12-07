@@ -1,11 +1,21 @@
-import StartPage from './pages/StartPage';
-import Layout from './components/Layout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import StartPage from "./pages/StartPage";
+import GamePage from "./pages/GamePage";
+import ResultPage from "./pages/ResultPage";
 
 function App() {
   return (
-    <Layout>
-      <StartPage />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/game" element={<GamePage />} />
+          <Route path="/result" element={<ResultPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
+
 export default App;

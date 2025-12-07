@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 function StartPage() {
-  return <div><h1>Старт гри</h1></div>;
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>Старт гри</h1>
+      <button onClick={() => navigate("/game")}>Почати</button>
+    </div>
+  );
 }
+
 export default StartPage;
