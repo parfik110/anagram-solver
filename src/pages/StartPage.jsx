@@ -7,6 +7,7 @@ function StartPage() {
     <div>
       <h1>Старт гри</h1>
       <button onClick={() => navigate("/game")}>Почати</button>
+      <button onClick={() => navigate("/settings")}>Налаштування</button>
     </div>
   );
 }
