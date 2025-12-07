@@ -1,0 +1,36 @@
+.container {
+  max-width: 500px;
+  margin: 80px auto;
+  text-align: center;
+  background: #1a1a1d;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #f2f2f2;
+  text-shadow: 0 0 10px #4a90e2;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4a90e2, #357ac9);
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 0 12px rgba(53, 122, 201, 0.4);
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #5aa0ff, #3b82f6);
+  box-shadow: 0 0 18px rgba(90, 160, 255, 0.6);
+}

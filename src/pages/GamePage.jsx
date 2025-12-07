@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
 import { useGameLogic } from "../hooks/useGameLogic";
 import GameOverModal from "../components/GameOverModal";
+import styles from "./GamePage.module.css";
 
 function GamePage() {
+  const { uid } = useParams();
+
   const {
     originalWord,
     shuffled,
@@ -11,36 +15,55 @@ function GamePage() {
     timeLeft,
     checkAnswer,
     showHintPrompt,
+    setShowHintPrompt,
     generateHint,
     hint,
     hintUsed,
     gameOver,
-    gameResult
+    gameResult,
+    resetGame
   } = useGameLogic();
 
   return (
-    <div>
-      <h1>Гра</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Гра</h1>
 
-      <p>Перемішане слово: <strong>{shuffled}</strong></p>
-      <p>Спроби: {attemptsLeft}</p>
-      <p>Час: {timeLeft} сек</p>
+      <p className={styles.word}>
+        Перемішане слово: <strong>{shuffled}</strong>
+      </p>
 
-      {hint && <p style={{ color: "blue" }}>{hint}</p>}
+      <div className={styles.stats}>
+        <p>Спроби: {attemptsLeft}</p>
+        <p>Час: {timeLeft} сек</p>
+      </div>
+
+      {hint && <p className={styles.hint}>{hint}</p>}
 
       <input
+        className={styles.input}
         type="text"
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
       />
 
-      <button onClick={checkAnswer}>Перевірити</button>
+      <button className={styles.button} onClick={checkAnswer}>
+        Перевірити
+      </button>
 
       {showHintPrompt && (
-        <div>
+        <div className={styles.hintPrompt}>
           <p>Хочеш підказку?</p>
-          <button onClick={generateHint}>Так</button>
-          <button onClick={() => setShowHintPrompt(false)}>Ні</button>
+          <div className={styles.hintButtons}>
+            <button className={styles.smallButton} onClick={generateHint}>
+              Так
+            </button>
+            <button
+              className={styles.smallButton}
+              onClick={() => setShowHintPrompt(false)}
+            >
+              Ні
+            </button>
+          </div>
         </div>
       )}
 
@@ -49,6 +72,7 @@ function GamePage() {
           result={gameResult}
           word={originalWord}
           hintUsed={hintUsed}
+          onRepeat={resetGame}
         />
       )}
     </div>

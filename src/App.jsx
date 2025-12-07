@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import StartPage from "./pages/StartPage";
 import GamePage from "./pages/GamePage";
-import ResultPage from "./pages/ResultPage";import SettingsPage from "./pages/SettingsPage";
+import ResultPage from "./pages/ResultPage";
+import SettingsPage from "./pages/SettingsPage";
 
 import { GameSettingsProvider } from "./context/GameSettingsContext";
 
@@ -12,12 +13,17 @@ function App() {
       <GameSettingsProvider>
         <Layout>
           <Routes>
-  <Route path="/" element={<StartPage />} />
-  <Route path="/settings" element={<SettingsPage />} />
-  <Route path="/game" element={<GamePage />} />
-  <Route path="/result" element={<ResultPage />} />
-</Routes>
+            <Route
+              path="/"
+              element={<Navigate to={`/${crypto.randomUUID()}/start`} replace />}
+            />
 
+            <Route path="/:uid/start" element={<StartPage />} />
+            <Route path="/:uid/settings" element={<SettingsPage />} />
+            <Route path="/:uid/game" element={<GamePage />} />
+            <Route path="/:uid/result" element={<ResultPage />} />
+
+          </Routes>
         </Layout>
       </GameSettingsProvider>
     </BrowserRouter>

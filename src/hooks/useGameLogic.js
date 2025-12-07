@@ -18,7 +18,7 @@ export function useGameLogic() {
   const [hintUsed, setHintUsed] = useState(false);
 
   const [gameOver, setGameOver] = useState(false);
-  const [gameResult, setGameResult] = useState(null); // "win" | "lose" | "time"
+  const [gameResult, setGameResult] = useState(null);
 
   const shuffleWord = (str) => {
     let shuffled = str;
@@ -33,10 +33,14 @@ export function useGameLogic() {
     return shuffled;
   };
 
-  useEffect(() => {
+  const startNewWord = () => {
     const word = pickWord();
     setOriginalWord(word);
     setShuffled(shuffleWord(word));
+  };
+
+  useEffect(() => {
+    startNewWord();
   }, []);
 
   useEffect(() => {
@@ -96,6 +100,19 @@ export function useGameLogic() {
     setShowHintPrompt(false);
   };
 
+  // ✅ ГОЛОВНЕ — resetGame
+  const resetGame = () => {
+    setAnswer("");
+    setAttemptsLeft(settings.attempts);
+    setTimeLeft(settings.time);
+    setShowHintPrompt(false);
+    setHint(null);
+    setHintUsed(false);
+    setGameOver(false);
+    setGameResult(null);
+    startNewWord();
+  };
+
   return {
     originalWord,
     shuffled,
@@ -105,10 +122,12 @@ export function useGameLogic() {
     timeLeft,
     checkAnswer,
     showHintPrompt,
+    setShowHintPrompt,
     generateHint,
     hint,
     hintUsed,
     gameOver,
-    gameResult
+    gameResult,
+    resetGame
   };
 }

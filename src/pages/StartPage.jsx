@@ -1,13 +1,27 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import styles from "./StartPage.module.css";
 
 function StartPage() {
   const navigate = useNavigate();
+  const { uid } = useParams();
 
   return (
-    <div>
-      <h1>Старт гри</h1>
-      <button onClick={() => navigate("/game")}>Почати</button>
-      <button onClick={() => navigate("/settings")}>Налаштування</button>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Старт гри</h1>
+
+      <button
+        className={styles.button}
+        onClick={() => navigate(`/${uid}/game`)}
+      >
+        Почати
+      </button>
+
+      <button
+        className={styles.button}
+        onClick={() => navigate(`/${uid}/settings`)}
+      >
+        Налаштування
+      </button>
     </div>
   );
 }

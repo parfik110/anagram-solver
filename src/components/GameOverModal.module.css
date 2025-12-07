@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #1a1a1d;
+  padding: 30px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  color: #f2f2f2;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  animation: pop 0.25s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #4a90e2;
+}
+
+.word {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.hint {
+  color: #4a90e2;
+  margin-bottom: 15px;
+  text-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4a90e2, #357ac9);
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 0 12px rgba(53, 122, 201, 0.4);
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #5aa0ff, #3b82f6);
+  box-shadow: 0 0 18px rgba(90, 160, 255, 0.6);
+}

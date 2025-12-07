@@ -1,8 +1,10 @@
 import ModalPortal from "./ModalPortal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import styles from "./GameOverModal.module.css";
 
-function GameOverModal({ result, word, hintUsed }) {
+function GameOverModal({ result, word, hintUsed, onRepeat }) {
   const navigate = useNavigate();
+  const { uid } = useParams();
 
   const getTitle = () => {
     if (result === "win") return "✅ Перемога!";
@@ -13,48 +15,34 @@ function GameOverModal({ result, word, hintUsed }) {
 
   return (
     <ModalPortal>
-      <div style={styles.overlay}>
-        <div style={styles.modal}>
-          <h2>{getTitle()}</h2>
+      <div className={styles.overlay}>
+        <div className={styles.modal}>
+          <h2 className={styles.title}>{getTitle()}</h2>
 
-          <p>Правильне слово: <strong>{word}</strong></p>
+          <p className={styles.word}>
+            Правильне слово: <strong>{word}</strong>
+          </p>
 
-          {hintUsed && <p style={{ color: "blue" }}>Підказка була використана</p>}
+          {hintUsed && (
+            <p className={styles.hint}>Підказка була використана</p>
+          )}
 
-          <div style={styles.buttons}>
-            <button onClick={() => navigate(0)}>Спробувати ще раз</button>
-            <button onClick={() => navigate("/")}>Головне меню</button>
+          <div className={styles.buttons}>
+            <button className={styles.button} onClick={onRepeat}>
+              Повтор
+            </button>
+
+            <button
+              className={styles.button}
+              onClick={() => navigate(`/${uid}/start`)}
+            >
+              Головне меню
+            </button>
           </div>
         </div>
       </div>
     </ModalPortal>
   );
 }
-
-const styles = {
-  overlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    background: "rgba(0,0,0,0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  modal: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "10px",
-    width: "300px",
-    textAlign: "center"
-  },
-  buttons: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "space-between"
-  }
-};
 
 export default GameOverModal;
