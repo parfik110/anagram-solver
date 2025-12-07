@@ -22,6 +22,12 @@ function StartPage() {
       >
         Налаштування
       </button>
+      <button
+        className={styles.button}
+        onClick={() => navigate(`/${uid}/result`)}
+      >
+        Таблиця результатів
+      </button>
     </div>
   );
 }

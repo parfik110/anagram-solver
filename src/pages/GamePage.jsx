@@ -3,8 +3,13 @@ import { useGameLogic } from "../hooks/useGameLogic";
 import GameOverModal from "../components/GameOverModal";
 import styles from "./GamePage.module.css";
 
+import { useDispatch } from "react-redux";
+import { addResult } from "../store/resultsSlice";
+import { useEffect } from "react";
+
 function GamePage() {
   const { uid } = useParams();
+  const dispatch = useDispatch();
 
   const {
     originalWord,
@@ -23,6 +28,20 @@ function GamePage() {
     gameResult,
     resetGame
   } = useGameLogic();
+
+  useEffect(() => {
+    if (gameOver) {
+      dispatch(
+        addResult({
+          word: originalWord,
+          result: gameResult,
+          hintUsed,
+          date: new Date().toLocaleString(),
+          uid
+        })
+      );
+    }
+  }, [gameOver]);
 
   return (
     <div className={styles.container}>

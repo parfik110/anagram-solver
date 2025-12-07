@@ -1,35 +1,40 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styles from "./ResultPage.module.css";
 
-function ResultPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { uid } = useParams();
-
-  const { correct, originalWord } = location.state || {};
+function ResultsPage() {
+  const results = useSelector((state) => state.results);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Результат</h1>
+      <h1 className={styles.title}>Таблиця результатів</h1>
 
-      {correct ? (
-        <p className={`${styles.result} ${styles.correct}`}>
-          ✅ Правильно! Слово: {originalWord}
-        </p>
+      {results.length === 0 ? (
+        <p className={styles.empty}>Поки що немає результатів</p>
       ) : (
-        <p className={`${styles.result} ${styles.wrong}`}>
-          ❌ Неправильно. Правильне слово: {originalWord}
-        </p>
-      )}
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Слово</th>
+              <th>Результат</th>
+              <th>Підказка</th>
+              <th>Дата</th>
+            </tr>
+          </thead>
 
-      <button
-        className={styles.button}
-        onClick={() => navigate(`/${uid}/start`)}
-      >
-        На головну
-      </button>
+          <tbody>
+            {results.map((r, i) => (
+              <tr key={i}>
+                <td>{r.word}</td>
+                <td>{r.result}</td>
+                <td>{r.hintUsed ? "Так" : "Ні"}</td>
+                <td>{r.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
 
-export default ResultPage;
+export default ResultsPage;
