@@ -11,20 +11,20 @@ function StartPage() {
 
       <button
         className={styles.button}
-        onClick={() => navigate(`/${uid}/game`)}
+        onClick={() => navigate(`/game/${uid}/game`)}
       >
         Почати
       </button>
 
       <button
         className={styles.button}
-        onClick={() => navigate(`/${uid}/settings`)}
+        onClick={() => navigate(`/game/${uid}/settings`)}
       >
         Налаштування
       </button>
       <button
         className={styles.button}
-        onClick={() => navigate(`/${uid}/result`)}
+        onClick={() => navigate(`/game/${uid}/result`)}
       >
         Таблиця результатів
       </button>

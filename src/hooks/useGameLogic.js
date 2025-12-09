@@ -100,7 +100,6 @@ export function useGameLogic() {
     setShowHintPrompt(false);
   };
 
-  // ✅ ГОЛОВНЕ — resetGame
   const resetGame = () => {
     setAnswer("");
     setAttemptsLeft(settings.attempts);

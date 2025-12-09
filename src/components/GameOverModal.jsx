@@ -34,7 +34,7 @@ function GameOverModal({ result, word, hintUsed, onRepeat }) {
 
             <button
               className={styles.button}
-              onClick={() => navigate(`/${uid}/start`)}
+              onClick={() => navigate(`/game/${uid}/start`)}
             >
               Головне меню
             </button>

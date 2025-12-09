@@ -15,13 +15,13 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Navigate to={`/${crypto.randomUUID()}/start`} replace />}
+              element={<Navigate to={`/game/${crypto.randomUUID()}/start`} replace />}
             />
 
-            <Route path="/:uid/start" element={<StartPage />} />
-            <Route path="/:uid/settings" element={<SettingsPage />} />
-            <Route path="/:uid/game" element={<GamePage />} />
-            <Route path="/:uid/result" element={<ResultPage />} />
+            <Route path="/game/:uid/start" element={<StartPage />} />
+            <Route path="/game/:uid/settings" element={<SettingsPage />} />
+            <Route path="/game/:uid/game" element={<GamePage />} />
+            <Route path="/game/:uid/result" element={<ResultPage />} />
 
           </Routes>
         </Layout>

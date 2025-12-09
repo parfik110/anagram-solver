@@ -45,7 +45,7 @@ function SettingsPage() {
 
   const onSubmit = (data) => {
     dispatch(updateSettings(data));
-    navigate(`/${uid}/game`);
+    navigate(`/game/${uid}/game`);
   };
 
   return (
