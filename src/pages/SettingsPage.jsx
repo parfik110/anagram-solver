@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateSettings, difficultyPresets } from "../store/settingsSlice";
+import { useGameSettings } from "../context/GameSettingsContext";
+import { difficultyPresets } from "../context/GameSettingsContext";
 import styles from "./SettingsPage.module.css";
 
 const schema = yup.object().shape({
@@ -17,20 +17,24 @@ const schema = yup.object().shape({
 function SettingsPage() {
   const navigate = useNavigate();
   const { uid } = useParams();
-  const dispatch = useDispatch();
 
-  const settings = useSelector((state) => state.settings);
+  const { settings, updateSettings } = useGameSettings();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-    watch
+    watch,
+    reset
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: settings
   });
+
+  useEffect(() => {
+    reset(settings);
+  }, [settings, reset]);
 
   const selectedDifficulty = watch("difficulty");
 
@@ -44,7 +48,7 @@ function SettingsPage() {
   }, [selectedDifficulty, setValue]);
 
   const onSubmit = (data) => {
-    dispatch(updateSettings(data));
+    updateSettings(data);
     navigate(`/game/${uid}/game`);
   };
 

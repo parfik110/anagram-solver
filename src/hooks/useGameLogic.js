@@ -22,14 +22,9 @@ export function useGameLogic() {
 
   const shuffleWord = (str) => {
     let shuffled = str;
-
     while (shuffled === str) {
-      shuffled = str
-        .split("")
-        .sort(() => Math.random() - 0.5)
-        .join("");
+      shuffled = str.split("").sort(() => Math.random() - 0.5).join("");
     }
-
     return shuffled;
   };
 
@@ -82,18 +77,12 @@ export function useGameLogic() {
 
     let hintText = "";
 
-    if (type === "first") {
-      hintText = `Перша літера: ${originalWord[0]}`;
-    }
-
+    if (type === "first") hintText = `Перша літера: ${originalWord[0]}`;
     if (type === "random") {
       const idx = Math.floor(Math.random() * originalWord.length);
       hintText = `Випадкова літера: ${originalWord[idx]}`;
     }
-
-    if (type === "two") {
-      hintText = `Перші дві літери: ${originalWord.slice(0, 2)}`;
-    }
+    if (type === "two") hintText = `Перші дві літери: ${originalWord.slice(0, 2)}`;
 
     setHint(hintText);
     setHintUsed(true);
