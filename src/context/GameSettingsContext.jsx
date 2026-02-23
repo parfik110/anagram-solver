@@ -20,6 +20,21 @@ export const difficultyPresets = {
   }
 };
 
+/**
+ * @file GameSettingsContext.jsx
+ * @module GameSettingsContext
+ * Provides game settings context and custom hook.
+ */
+
+/**
+ * GameSettingsProvider component
+ *
+ * @function GameSettingsProvider
+ * @component
+ * @param {Object} props - React props
+ * @param {JSX.Element} props.children - Child components
+ * @returns {JSX.Element|null} Context provider or null if settings not initialized
+ */
 export function GameSettingsProvider({ children }) {
   const [settings, setSettings] = useState(null);
 

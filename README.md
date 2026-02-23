@@ -37,3 +37,8 @@ This requires attribution to the original authors.
 For example, SPDX-related packages are licensed under CC-BY-3.0/4.0 by The Linux Foundation and contributors.  
 "SPDX" is a registered trademark of The Linux Foundation.  
 Other packages are licensed under MIT, Apache, BSD, and similar permissive licenses.
+
+## Documentation
+Generated with JSDoc.  
+Run `npm run docs` to build documentation locally.  
+See the `docs/` folder for generated files.
