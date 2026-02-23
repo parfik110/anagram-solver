@@ -8,6 +8,19 @@ import SettingsPage from "./pages/SettingsPage";
 import { GameSettingsProvider } from "./context/GameSettingsContext";
 import CookieConsent from "react-cookie-consent";
 
+/**
+ * @file App.jsx
+ * @module App
+ * Root component of the application.
+ * Provides routing, layout, game settings context, and GDPR cookie consent popup.
+ */
+
+/**
+ * App component
+ *
+ * @component
+ * @returns {JSX.Element} The rendered application with routes and providers
+ */
 function App() {
   return (
     <BrowserRouter>

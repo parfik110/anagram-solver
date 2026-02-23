@@ -2,6 +2,22 @@ import ModalPortal from "./ModalPortal";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./GameOverModal.module.css";
 
+/**
+ * @file GameOverModal.jsx
+ * @module GameOverModal
+ * Modal component displayed when the game ends.
+ */
+
+/**
+ * GameOverModal component
+ *
+ * @component
+ * @param {"win"|"lose"|"time"} result - The result of the game
+ * @param {string} word - The correct word
+ * @param {boolean} hintUsed - Whether a hint was used
+ * @param {function} onRepeat - Callback to restart the game
+ * @returns {JSX.Element} The rendered modal
+ */
 function GameOverModal({ result, word, hintUsed, onRepeat }) {
   const navigate = useNavigate();
   const { uid } = useParams();
