@@ -42,3 +42,8 @@ Other packages are licensed under MIT, Apache, BSD, and similar permissive licen
 Generated with JSDoc.  
 Run `npm run docs` to build documentation locally.  
 See the `docs/` folder for generated files.
+
+## Storybook Demo
+
+To run Storybook locally:
+`npm run storybook`
