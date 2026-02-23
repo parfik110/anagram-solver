@@ -11,7 +11,7 @@ npm run dev
 Then open http://localhost:5173 in your browser.
 
 ## License
-See LICENSE file for details.
+See [LICENSE](LICENSE) file for details.
 
 ## Author
 Oleksandr Parfeniuk
